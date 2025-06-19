@@ -16,20 +16,22 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: docker.io/library/postgres:15
+        image: registry.redhat.io/rhel10/postgresql-16
         ports:
         - containerPort: 5432
         env:
-        - name: POSTGRES_DB
+        - name: TZ
+          value: Europe/Madrid
+        - name: POSTGRESQL_DATABASE
           value: coolstore
-        - name: POSTGRES_USER
+        - name: POSTGRESQL_USER
           value: quarkus
-        - name: POSTGRES_PASSWORD
+        - name: POSTGRESQL_PASSWORD
           value: quarkus
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
-          name: postgres-storage
+          name: postgresql-data
       volumes:
-      - name: postgres-storage
+      - name: postgresql-data
         persistentVolumeClaim:
           claimName: postgres-pvc

@@ -47,7 +47,10 @@ Keycloak is now configured correctly
 
 Log in to OpenShift CLI
 
-`oc login`
+```
+oc login
+oc project coolstore
+```
 
 From the root of this repo, run: 
 
